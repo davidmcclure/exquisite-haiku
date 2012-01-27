@@ -39,7 +39,20 @@ module.exports = function(app) {
 
             // If field validations pass.
             success: function(form) {
-                res.send('valid');
+
+                // Create new user.
+                var user = new User({
+                    username: form.data.username,
+                    email: form.data.email,
+                    hash: form.data.password
+                });
+
+                // Save and redirect.
+                user.save(function() {
+                    req.session.user_id = user.id;
+                    res.redirect('/admin');
+                });
+
             },
 
             // If field validations fail.

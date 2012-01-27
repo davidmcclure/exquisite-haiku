@@ -10,7 +10,7 @@
 var crypto = require('crypto');
 
 // Schema definition.
-var UserSchema = new Schema({
+var User = new Schema({
     username :  { type: String, unique: true },
     hash :      { type: String },
     salt :      { type: String },
@@ -46,4 +46,4 @@ User.method('encryptPassword', function() {
     return crypto.creatHmac('sha1', this.salt).update(password).digest('hex');
 });
 
-mongoose.model('User', UserSchema)
+mongoose.model('User', User)

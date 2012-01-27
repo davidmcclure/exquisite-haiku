@@ -9,11 +9,10 @@
  // Module dependencies.
 var express = require('express')
   , connect = require('connect')
-  , mongoStore = require('connect-mongodb')
+  , configFile = require('yaml-config')
   , fs = require('fs');
 
 // Load configuration.
-var configFile = require('yaml-config');
 config = configFile.readConfig('config/config.yaml');
 
 // Connect to database.

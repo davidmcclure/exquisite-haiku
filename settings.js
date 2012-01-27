@@ -7,7 +7,8 @@
  */
 
  // Module dependencies and import hook.
-var express = require('express');
+var express = require('express')
+  , mongoStore = require('connect-mongodb');
 
 exports.boot = function(app) {
     bootApplication(app);
@@ -26,7 +27,8 @@ function bootApplication(app) {
         app.use(express.bodyParser());
         app.use(express.cookieParser());
         app.use(express.session({
-            secret: 'test'
+            store: mongoStore(config.db.uri),
+            secret: 'dev'
         }));
 
         app.use(express.methodOverride());
