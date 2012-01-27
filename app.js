@@ -1,0 +1,44 @@
+/*
+ * Application runner.
+ *
+ * @package     exquisite-haiku
+ * @author      David McClure
+ * @license     Apache 2.0
+ */
+
+ // Module dependencies.
+var express =   require('express')
+  , fs =        require('fs');
+
+// Load configuration.
+var configFile = require('yaml-config');
+config = configFile.readConfig('config/config.yaml');
+
+// Connect to database.
+require('./db-connect');
+
+// Bootstrap models
+var modelsPath = __dirname + '/app/models';
+var modelFiles = fs.readdirSync(modelsPath);
+modelFiles.forEach(function(file) {
+    require(modelsPath + '/' + file)
+});
+
+// Create server and do settings.
+var app = module.exports = express.createServer();
+require('./settings').boot(app);
+
+// Bootstrap controllers
+var controllersPath = __dirname + '/app/controllers';
+var controllerFiles = fs.readdirSync(controllersPath);
+controllerFiles.forEach(function(file){
+    require(controllersPath + '/' + file)(app);
+});
+
+// Run.
+app.listen(3000);
+console.log(
+    "Listening on port %d in %s mode",
+    app.address().port,
+    app.settings.env
+);
