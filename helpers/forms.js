@@ -10,6 +10,7 @@
 var forms = require('forms')
   , fields = forms.fields
   , validators = forms.validators
+  , customValidators = require('./validators');
 
 // Authorization forms.
 exports.authForms = {
@@ -21,7 +22,10 @@ exports.authForms = {
 
             username: fields.string({
                 required: 'Enter a username.',
-                validators: [validators.rangeLength(5, 20, '5-20 characters.')]
+                validators: [
+                    validators.rangeLength(5, 20, '5-20 characters.'),
+                    customValidators.uniqueUsername('Username taken.')
+                ]
             }),
 
             password: fields.password({
@@ -35,7 +39,8 @@ exports.authForms = {
             }),
 
             email: fields.email({
-                required: 'Enter an email address.'
+                required: 'Enter an email address.',
+                validators: [customValidators.uniqueEmail('Email taken.')]
             })
 
         });

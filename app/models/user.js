@@ -46,9 +46,4 @@ User.methods.encryptPassword = function(password) {
     return crypto.createHmac('sha1', this.salt).update(password).digest('hex');
 };
 
-// Check username availability
-User.static.usernameIsAvailable = function(username) {
-    return Boolean(this.where('username', username));
-};
-
 mongoose.model('User', User)

@@ -10,9 +10,21 @@
 var User = mongoose.model('User');
 
 // Username availability.
-exports.uniqueUsername = function(username, msg) {
+exports.uniqueUsername = function(msg) {
     return function(form, field, callback) {
-        // if (field.data.length == 0) callback();
-        // else callback(msg);
+        User.findOne({username: field.data}, function(err, doc) {
+            if (doc === null) callback();
+            else callback(msg);
+        });
+    }
+}
+
+// Email availability.
+exports.uniqueEmail = function(msg) {
+    return function(form, field, callback) {
+        User.findOne({email: field.data}, function(err, doc) {
+            if (doc === null) callback();
+            else callback(msg);
+        });
     }
 }
