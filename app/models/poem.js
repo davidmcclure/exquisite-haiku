@@ -7,6 +7,7 @@
  */
 
 // Load models.
+require('./round.js');
 var Round = mongoose.model('Round');
 
 // Schema definition.

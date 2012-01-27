@@ -7,6 +7,7 @@
  */
 
 // Load models.
+require('./word.js');
 var Word = mongoose.model('Word');
 
 // Schema definition.

@@ -7,6 +7,7 @@
  */
 
 // Load models.
+require('./vote.js');
 var Vote = mongoose.model('Vote');
 
 // Schema definition.
@@ -15,4 +16,4 @@ var Word = new Schema({
     votes :             [Vote]
 });
 
-mongoose.model('Round', Round)
+mongoose.model('Word', Word)
