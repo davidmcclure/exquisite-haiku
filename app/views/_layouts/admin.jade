@@ -5,10 +5,11 @@ html
     block js
     block css
       link(rel='stylesheet', href='/stylesheets/_style.css')
-      link(rel='stylesheet', href='/stylesheets/admin.css')
+      link(rel='stylesheet', href='/stylesheets/index.css')
   body
+    a.logo(href='/admin')
+      h1 exquisitehaiku
     nav
-      a.logo(href='/admin') exquisitehaiku
-      a(href='/new') new poem
+      a(href='/new') create
       a(href='/logout') logout
     != body

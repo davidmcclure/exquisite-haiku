@@ -48,3 +48,19 @@ exports.passwordCorrectness = function(msg) {
         });
     }
 }
+
+// Positive.
+exports.isPositive = function(msg) {
+    return function(form, field, callback) {
+        if (field.data > 0) callback()
+        else callback(msg)
+    }
+}
+
+// Integer.
+exports.isInteger = function(msg) {
+    return function(form, field, callback) {
+        if (field.data % 1 == 0) callback()
+        else callback(msg)
+    }
+}

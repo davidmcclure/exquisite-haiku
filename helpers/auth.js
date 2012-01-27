@@ -30,3 +30,9 @@ exports.loadUser = function (req, res, next) {
     else res.redirect('/login');
 
 }
+
+// If there is a user session, redirect to the admin.
+exports.anonUser = function (req, res, next) {
+    if (req.session.user_id) res.redirect('/admin');
+    else next();
+}

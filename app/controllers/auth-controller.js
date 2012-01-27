@@ -8,6 +8,7 @@
 
 // Module dependencies.
 var forms = require('../../helpers/forms')
+var auth = require('../../helpers/auth')
 
 // Models.
 var User = mongoose.model('User');
@@ -18,7 +19,7 @@ module.exports = function(app) {
     /*
      * GET /register
      */
-    app.get('/register', function(req, res) {
+    app.get('/register', auth.anonUser, function(req, res) {
 
         // Render register form.
         res.render('auth/register', {
@@ -32,7 +33,7 @@ module.exports = function(app) {
     /*
      * POST /register
      */
-    app.post('/register', function(req, res) {
+    app.post('/register', auth.anonUser, function(req, res) {
 
         // Pass control to form.
         forms.authForms.register().handle(req, {
@@ -71,7 +72,7 @@ module.exports = function(app) {
     /*
      * GET /login
      */
-    app.get('/login', function(req, res) {
+    app.get('/login', auth.anonUser, function(req, res) {
         res.render('auth/login', {
             title: 'login',
             form: forms.authForms.login(),
@@ -82,7 +83,7 @@ module.exports = function(app) {
     /*
      * POST /login
      */
-    app.post('/login', function(req, res) {
+    app.post('/login', auth.anonUser, function(req, res) {
 
         // Pass control to form.
         forms.authForms.login().handle(req, {
@@ -115,6 +116,7 @@ module.exports = function(app) {
             }
 
         });
+
     });
 
     /*

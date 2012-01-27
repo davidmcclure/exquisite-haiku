@@ -1,4 +1,4 @@
-body{font:14px "Lucida Grande",Helvetica,Arial,sans-serif}
+body{padding:20px;font:14px "Lucida Grande",Helvetica,Arial,sans-serif}
 a,button{color:#00b7ff;background:none;border:none;margin:0;padding:0;width:auto;font:14px "Lucida Grande",Helvetica,Arial,sans-serif;cursor:pointer;text-decoration:none;}
 a:hover,button:hover{text-decoration:underline}
 a.logo{color:#9a9a9a;text-decoration:none;}
@@ -7,5 +7,7 @@ a.logo h1{margin-top:0}
 p{line-height:1.5em}
 p.error_msg{color:#f00;font-size:12px}
 div.field{margin-bottom:1em}
-input{display:block;padding:8px;border:1px solid #ccc;outline:none;width:150px;}
+input{display:block;padding:8px;border:1px solid #ccc;outline:none;width:150px;margin-top:4px;}
 input:hover,input:focus{border-color:#00b7ff}
+label{font-size:.9em}
+nav{margin:1em 0}

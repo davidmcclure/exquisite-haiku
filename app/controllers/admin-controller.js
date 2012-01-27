@@ -32,17 +32,38 @@ module.exports = function(app) {
      */
     app.get('/new', auth.loadUser, function(req, res) {
         res.render('admin/new', {
-            title: 'poems',
+            title: 'new poem',
             user: req.user,
+            form: forms.adminForms.create(),
             layout: '_layouts/admin'
         });
     });
 
     /*
-     * POST /register
+     * POST /new
      */
-    app.post('/new', function(req, res) {
-        res.send('POST /new');
+    app.post('/new', auth.loadUser, function(req, res) {
+
+        // Pass control to form.
+        forms.adminForms.create().handle(req, {
+
+            // If field validations pass.
+            success: function(form) {
+                res.send('valid');
+            },
+
+            // If field validations fail.
+            other: function(form) {
+                res.render('admin/new', {
+                    title: 'new poem',
+                    user: req.user,
+                    form: form,
+                    layout: '_layouts/admin'
+                });
+            }
+
+        });
+
     });
 
     /*
