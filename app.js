@@ -7,8 +7,10 @@
  */
 
  // Module dependencies.
-var express =   require('express')
-  , fs =        require('fs');
+var express = require('express')
+  , connect = require('connect')
+  , mongoStore = require('connect-mongodb')
+  , fs = require('fs');
 
 // Load configuration.
 var configFile = require('yaml-config');

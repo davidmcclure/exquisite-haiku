@@ -10,6 +10,7 @@
     , "passport": ">= 0.1.5"
     , "passport-local": ">= 0.0.0"
     , "mongoose": ">= 2.4.10"
+    , "connect-mongo": ">= 0.1.6"
     , "yaml-config": ">= 0.1.0"
     , "forms": "https://github.com/davidmcclure/forms/tarball/master"
   }
