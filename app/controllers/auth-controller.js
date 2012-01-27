@@ -89,8 +89,20 @@ module.exports = function(app) {
 
             // If field validations pass.
             success: function(form) {
-                // ** log in user.
-                res.send('valid');
+
+                // Try to find the user.
+                User.findOne({
+                    username: form.data.username
+                }, function(err, user) {
+
+                    // Authenticate and redirect.
+                    if (user.authenticate(form.data.password)) {
+                        req.session.user_id = user.id;
+                        res.redirect('/admin');
+                    }
+
+                });
+
             },
 
             // If field validations fail.

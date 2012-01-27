@@ -8,6 +8,7 @@
 
 // Module dependencies.
 var forms = require('../../helpers/forms')
+var auth = require('../../helpers/auth')
 
 // Models.
 // var User = mongoose.model('User');
@@ -18,7 +19,7 @@ module.exports = function(app) {
     /*
      * GET /admin
      */
-    app.get('/admin', function(req, res) {
+    app.get('/admin', auth.loadUser, function(req, res) {
         res.send('GET /admin');
     });
 

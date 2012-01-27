@@ -53,11 +53,13 @@ exports.authForms = {
         return forms.create({
 
             username: fields.string({
-                required: 'Enter a username.'
+                required: 'Enter a username.',
+                validators: [customValidators.usernameExists('Does not exist.')]
             }),
 
             password: fields.password({
-                required: 'Enter a password.'
+                required: 'Enter a password.',
+                validators: [customValidators.passwordCorrectness('Incorrect.')]
             })
 
         });
