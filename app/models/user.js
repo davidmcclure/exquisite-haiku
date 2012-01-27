@@ -9,12 +9,16 @@
 // Module dependencies.
 var crypto = require('crypto');
 
+// Load models.
+var Poem = mongoose.model('Poem');
+
 // Schema definition.
 var User = new Schema({
     username :  { type: String, unique: true },
     hash :      String,
     salt :      String,
     email :     { type: String, unique: true },
+    poems :     [Poem]
 });
 
 // Id getter.

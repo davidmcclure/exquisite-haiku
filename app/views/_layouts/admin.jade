@@ -4,11 +4,11 @@ html
     title= title
     block js
     block css
+      link(rel='stylesheet', href='/stylesheets/_style.css')
       link(rel='stylesheet', href='/stylesheets/admin.css')
   body
-    div * * * * *
-    div * * * * * * *
-    div * * * * *
-    a.logo(href='/')
-      h1 exquisitehaiku
+    nav
+      a.logo(href='/admin') exquisitehaiku
+      a(href='/new') new poem
+      a(href='/logout') logout
     != body

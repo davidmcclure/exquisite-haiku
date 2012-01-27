@@ -14,7 +14,7 @@ module.exports = function(app) {
     app.get('/', function(req, res) {
         res.render('index', {
           title: 'exquisitehaiku',
-          layout: '_layouts/admin'
+          layout: '_layouts/index'
         });
     });
 

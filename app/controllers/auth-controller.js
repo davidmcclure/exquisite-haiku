@@ -24,7 +24,7 @@ module.exports = function(app) {
         res.render('auth/register', {
             title: 'register',
             form: forms.authForms.register(),
-            layout: '_layouts/admin'
+            layout: '_layouts/index'
         });
 
     });
@@ -60,7 +60,7 @@ module.exports = function(app) {
                 res.render('auth/register', {
                     title: 'register',
                     form: form,
-                    layout: '_layouts/admin'
+                    layout: '_layouts/index'
                 });
             }
 
@@ -75,7 +75,7 @@ module.exports = function(app) {
         res.render('auth/login', {
             title: 'login',
             form: forms.authForms.login(),
-            layout: '_layouts/admin'
+            layout: '_layouts/index'
         });
     });
 
@@ -110,7 +110,7 @@ module.exports = function(app) {
                 res.render('auth/login', {
                     title: 'login',
                     form: form,
-                    layout: '_layouts/admin'
+                    layout: '_layouts/index'
                 });
             }
 
@@ -120,7 +120,7 @@ module.exports = function(app) {
     /*
      * GET /logout
      */
-    app.get('/logout', function(req, res) {        
+    app.get('/logout', function(req, res) {
         req.session.destroy(function() {});
         res.redirect('/');
     });

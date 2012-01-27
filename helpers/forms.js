@@ -67,3 +67,24 @@ exports.authForms = {
     }
 
 };
+
+// Admin forms.
+exports.adminForms = {
+
+    // Create poem.
+    create: function() {
+
+        return forms.create({
+
+            slug: fields.string({
+                required: 'Enter a slug.',
+                validators: [
+
+                ]
+            })
+
+        });
+
+    }
+
+};
