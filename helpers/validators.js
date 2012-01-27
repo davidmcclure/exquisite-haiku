@@ -6,18 +6,13 @@
  * @license     Apache 2.0
  */
 
-// Presence.
-exports.required = function(msg) {
-    return function(form, field, callback) {
-        if (field.data.length == 0) callback();
-        else callback(msg);
-    }
-}
+// Models.
+var User = mongoose.model('User');
 
-// Range length.
-exports.rangeLength = function(min, max, msg) {
+// Username availability.
+exports.uniqueUsername = function(username, msg) {
     return function(form, field, callback) {
-        if (field.data.length >= min && field.data.length <= max) callback();
-        else callback(msg);
+        // if (field.data.length == 0) callback();
+        // else callback(msg);
     }
 }

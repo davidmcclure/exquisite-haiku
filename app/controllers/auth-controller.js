@@ -44,7 +44,7 @@ module.exports = function(app) {
                 var user = new User({
                     username: form.data.username,
                     email: form.data.email,
-                    hash: form.data.password
+                    password: form.data.password
                 });
 
                 // Save and redirect.

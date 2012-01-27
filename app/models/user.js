@@ -12,8 +12,8 @@ var crypto = require('crypto');
 // Schema definition.
 var User = new Schema({
     username :  { type: String, unique: true },
-    hash :      { type: String },
-    salt :      { type: String },
+    hash :      String,
+    salt :      String,
     email :     { type: String, unique: true },
 });
 
@@ -32,18 +32,23 @@ User.virtual('password').set(function(password) {
 });
 
 // Check password.
-User.method('authenticate', function(plainText) {
+User.methods.authenticate = function(plainText) {
     return this.encryptPassword(plainText) === this.hash;
-});
+};
 
 // Create salt.
-User.method('generateSalt', function() {
+User.methods.generateSalt = function() {
     return Math.round((new Date().valueOf() + Math.random())) + '';
-});
+};
 
 // Encrypt password.
-User.method('encryptPassword', function() {
-    return crypto.creatHmac('sha1', this.salt).update(password).digest('hex');
-});
+User.methods.encryptPassword = function(password) {
+    return crypto.createHmac('sha1', this.salt).update(password).digest('hex');
+};
+
+// Check username availability
+User.static.usernameIsAvailable = function(username) {
+    return Boolean(this.where('username', username));
+};
 
 mongoose.model('User', User)
